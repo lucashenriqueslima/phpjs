@@ -24,16 +24,17 @@
                 return;
             }
 
-        /*        $l=2;
+               
 
-            $userEmail = (new User())->find("email = :e AND level = :l" , "e={$login}&l={$l}")->fetch();
+            $user = (new User())->find("email = :e AND passwd = :p  OR cpf = :c AND passwd = :p" , "e={$login}&c={$login}&p={$passwd} ")->fetch();
+
             
-            if ($userEmail && password_verify($passwd, $userEmail->passwd)) {
+            if ($user) {
                 
-                echo $this->ajaxResponse("redirect", ["url" => $this->router->route("appadmin.home")]);
-                $_SESSION["userAdmin"] = $userEmail->id;
-                $_SESSION["emailAdmin"] = $userEmail->email;
-                $_SESSION["nameAdmin"] = $userEmail->first_name." ".$userEmail->last_name;
+                echo $this->ajaxResponse("redirect", ["url" => $this->router->route("app.home")]);
+                $_SESSION["userAdmin"] = $user->id;
+                $_SESSION["emailAdmin"] = $user->email;
+                $_SESSION["nameAdmin"] = $user->first_name." ".$user->last_name;
 
                 if(!empty($_SESSION["nameAdmin"])){
                 flash("blue darken-3", "Seja bem-vindo ao painel de controle {$_SESSION["nameAdmin"]}  :-)");
@@ -41,21 +42,7 @@
                 return;
                 
             } 
-*/
 
-if ($login === "admin" && $passwd === "12345") {
-                
-    echo $this->ajaxResponse("redirect", ["url" => $this->router->route("app.home")]);
-    /*$_SESSION["userAdmin"] = $userEmail->id;
-    $_SESSION["emailAdmin"] = $userEmail->email;*/
-    $_SESSION["nameAdmin"] = "Lucas";
-
-    if(!empty($_SESSION["nameAdmin"])){
-    flash("success", "Seja bem-vindo {$_SESSION["nameAdmin"]}  :-)");
-    }
-    return;
-    
-} 
             echo $this->ajaxResponse("message", [
                 "type" => "error",
                 "message" => "Login ou senha incorreto(s)"

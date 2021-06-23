@@ -5,17 +5,17 @@
     "desc"=>"desc qualquer",
     "domain"=>"",
     "locale"=>"pt_BR",
-    "root"=>"http://localhost:888/matics2",
+    "root"=>"http://187.54.90.68:888/matics2/",
 
     ]);
 
     define("DATA_LAYER_CONFIG", [
         "driver" => "mysql",
         "host" => "localhost",
-        "port" => "3325",
-        "dbname" => "testes",
+        "port" => "3306",
+        "dbname" => "matics2",
         "username" => "root",
-        "passwd" => "",
+        "passwd" => "Banana123432",
         "options" => [
             PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -24,10 +24,6 @@
         ]
     ]);
 
-    define("LEVEL", [
-        "user"=> 1,
-        "admin"=> 2
-    ]);
 
 
 
